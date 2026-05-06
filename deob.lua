@@ -3,6 +3,15 @@ Junkie.service = "KnoxDuelPaid"
 Junkie.identifier = "1005529"
 Junkie.provider = "KnoxDuelPaid"
 
+
+-- PATCHED BY CHORFLA/N0DE3 ON DC
+
+-- PATCH: Override key check to always succeed
+local original_check = Junkie.check_key
+Junkie.check_key = function(key)
+    return {valid = true, message = "KEY_VALID"}
+end
+
 local result = (function()
     getgenv().UI_CLOSED = false
     local Players = game:GetService("Players")
